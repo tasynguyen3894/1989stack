@@ -1,5 +1,5 @@
 # Stack for true frontend developer 
-## Auto build with template html, convert sass and typecript. Auto reload browser with browser-sync
+## Auto build with template html, convert sass and typescript. Auto reload browser with browser-sync
 
 ```
 $ gulp watch
