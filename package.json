@@ -1,0 +1,8 @@
+{
+  "name": "1989stack",
+  "version": "1.0.0",
+  "main": "index.js",
+  "repository": "https://github.com/tasynguyen3894/1989stack.git",
+  "author": "Sang Nguyen <thaisang.nguyen3894@gmail.com>",
+  "license": "MIT"
+}
