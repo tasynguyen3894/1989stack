@@ -6,19 +6,25 @@ var configForRun = {
 		use: config.browserSync.use
 	},
 	htmlTemplate: {
-        use: config.src.html.use,
+		use: config.src.html.use,
+		srcFolder: config.src.path + '/' + config.src.html.src + '/' + config.src.html.page,
 		template: config.src.path + '/' + config.src.html.src + '/template/' + config.src.html.template,
 		page: config.src.path + '/' + config.src.html.src + '/' + config.src.html.page + '/*.html',
+		srcNoUse: config.src.path + '/' + config.src.html.src + '/' + config.src.html.page + '/*.html',
 		release: config.release.path
 	},
     sass: {
 		use: config.src.sass.use,
-        src: config.src.path + '/' + config.src.sass.src + '/*.scss',
+		srcFolder: config.src.path + '/' + config.src.sass.src,
+		src: config.src.path + '/' + config.src.sass.src + '/*.scss',
+		srcNoUse: config.src.path + '/' + config.src.sass.src + '/*.css',
 		release: config.release.path + '/' + config.release.assets + '/' + config.src.sass.release
 	},
     typescript: {
 		use: config.src.typescript.use,
-        src: config.src.path + '/' + config.src.typescript.src + '/*.ts',
+		srcFolder: config.src.path + '/' + config.src.typescript.src,
+		src: config.src.path + '/' + config.src.typescript.src + '/*.ts',
+		srcNoUse: config.src.path + '/' + config.src.typescript.src + '/*.js',
 		release: config.release.path + '/' + config.release.assets + '/' + config.src.typescript.release
 	},
 	cmd: {
@@ -26,6 +32,10 @@ var configForRun = {
 		htmlTemplate: config.prefix + '_gulp-template-html',
 		sass: config.prefix + '_sass',
 		typescript: config.prefix + '_typescript',
+		No_browserSync: 'no_' + config.prefix + '_browser-sync',
+		No_htmlTemplate: 'no_' + config.prefix + '_gulp-template-html',
+		No_sass: 'no_' + config.prefix + '_sass',
+		No_typescript: 'no_' + config.prefix + '_typescript',
 	}
 }
 
