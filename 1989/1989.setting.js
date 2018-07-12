@@ -27,11 +27,17 @@ var configForRun = {
 		srcNoUse: config.src.path + '/' + config.src.typescript.src + '/*.js',
 		release: config.release.path + '/' + config.release.assets + '/' + config.src.typescript.release
 	},
+	deploy: {
+		use: config.deploy.use,
+		branch: config.deploy.branch,
+		release: config.release.path + '/**/*'
+	},
 	cmd: {
 		browserSync: config.prefix + '_browser-sync',
 		htmlTemplate: config.prefix + '_gulp-template-html',
 		sass: config.prefix + '_sass',
 		typescript: config.prefix + '_typescript',
+		deploy: config.prefix + '_deploy',
 		No_browserSync: 'no_' + config.prefix + '_browser-sync',
 		No_htmlTemplate: 'no_' + config.prefix + '_gulp-template-html',
 		No_sass: 'no_' + config.prefix + '_sass',

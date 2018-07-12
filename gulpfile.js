@@ -58,6 +58,16 @@ if(conf.typescript.use) {
     });
 }
 
+if(conf.deploy.use) {
+	const ghPages = require('gulp-gh-pages');
+	gulp.task(conf.cmd.deploy, function () {
+		return gulp.src(conf.deploy.release)
+				.pipe(ghPages({
+					branch: conf.deploy.branch
+				}));
+	});
+}
+
 gulp.task('watch', listWatch, function () {
     if(conf.sass.use) {
 		gulp.watch([conf.sass.src], [conf.cmd.sass]);

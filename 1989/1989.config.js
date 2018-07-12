@@ -25,5 +25,9 @@ exports.config = {
 	browserSync: {
 		use: true
 	},
+	deploy: {
+		use: true,
+		branch: 'release'
+	},
 	prefix: '1989'
 }
