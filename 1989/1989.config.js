@@ -1,7 +1,7 @@
 exports.config = {
 	release: {
-		path: 'dist',
-		assets: 'public'
+		path: 'dist', // release html folder
+		assets: 'public' // release js and css folder
 	},
 	src: {
 		path: 'src',
@@ -12,7 +12,7 @@ exports.config = {
 			template: 'main.html'
 		},
 		sass: {
-			use: false,
+			use: true,
 			src: 'sass',
 			release: 'css'
 		},
