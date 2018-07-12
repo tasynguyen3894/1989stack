@@ -24,5 +24,6 @@ exports.config = {
 	},
 	browserSync: {
 		use: true
-	}
+	},
+	prefix: '1989'
 }

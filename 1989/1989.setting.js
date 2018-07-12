@@ -21,6 +21,12 @@ var configForRun = {
         src: config.src.path + '/' + config.src.typescript.src + '/*.ts',
 		release: config.release.path + '/' + config.release.assets + '/' + config.src.typescript.release
 	},
+	cmd: {
+		browserSync: config.prefix + '_browser-sync',
+		htmlTemplate: config.prefix + '_gulp-template-html',
+		sass: config.prefix + '_sass',
+		typescript: config.prefix + '_typescript',
+	}
 }
 
 exports.conf = configForRun;

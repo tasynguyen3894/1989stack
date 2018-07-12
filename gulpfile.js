@@ -1,20 +1,22 @@
 var gulp = require('gulp');
 var { conf } = require('./1989/1989.setting');
+var listWatch = [];
 
 if(conf.browserSync.use) {
 	var browserSync = require('browser-sync').create();
-	gulp.task('browser-sync', function () {
+	gulp.task(conf.cmd.browserSync, function () {
 		browserSync.init({
 			server: {
 				baseDir: './' + conf.browserSync.path + '/' 
 			}
 		});
 	});
+	listWatch.push(conf.cmd.browserSync);
 }
 
 if(conf.htmlTemplate.use) {
 	var template = require('gulp-template-html');
-	gulp.task('html-template', function () {
+	gulp.task(conf.cmd.htmlTemplate, function () {
 		return gulp.src(conf.htmlTemplate.page)
 				.pipe(template(conf.htmlTemplate.template))
 				.pipe(gulp.dest(conf.htmlTemplate.release));
@@ -23,7 +25,7 @@ if(conf.htmlTemplate.use) {
 
 if(conf.sass.use) {
 	var sass = require('gulp-sass');
-    gulp.task('sass', function () {
+    gulp.task(conf.cmd.sass, function () {
         return gulp.src(conf.sass.src)
                     .pipe(sass({errLogToConsole: true}).on("error", sass.logError))
                     .pipe(gulp.dest(conf.sass.release));
@@ -32,8 +34,7 @@ if(conf.sass.use) {
 
 if(conf.typescript.use) {
 	var ts = require('gulp-typescript');
-    console.log(conf.typescript);
-    gulp.task( 'type-script' , function () {
+    gulp.task(conf.cmd.typescript, function () {
         return gulp.src(conf.typescript.src)
             .pipe(ts({
                 noImplicitAny: true
@@ -42,15 +43,15 @@ if(conf.typescript.use) {
     });
 }
 
-gulp.task('watch', ['browser-sync'], function () {
+gulp.task('watch', listWatch, function () {
     if(conf.sass.use) {
-		gulp.watch([conf.sass.src], ['sass']);
+		gulp.watch([conf.sass.src], [conf.cmd.sass]);
 	}
     if(conf.typescript.use) {
-		gulp.watch([conf.typescript.src], ['type-script']);
+		gulp.watch([conf.typescript.src], [conf.cmd.typescript]);
 	}
 	if(conf.htmlTemplate.use) {
-		gulp.watch([conf.htmlTemplate.page, conf.htmlTemplate.template], ['html-template']);
+		gulp.watch([conf.htmlTemplate.page, conf.htmlTemplate.template], [conf.cmd.htmlTemplate]);
 	}
 	if(conf.browserSync.use) {
 		gulp.watch([conf.browserSync.path + '/**/*.*', conf.browserSync.path + '/*.*',]).on('change', browserSync.reload );
